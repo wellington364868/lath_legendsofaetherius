@@ -1,4 +1,8 @@
-
+TODO:
+- Implemntar DATH_BasicSmithing para CORRIGIR ModifyTemperedHealth para os materiais básicos como iron, leather, hide, fur, etc antes do desbloqueio do SmithingArts
+- Criar os efeitos para iron que está embutido em steel, leather, fur e Hide que estão embutidos em scaled.
+- Criar o efeito para Steel e SteelPlate. SteelPlate está embutida em steel a partir do nível 40.
+- Criar os efeitos para Dwarven
 
 
 SMTHING
@@ -33,4 +37,6 @@ SMTHING
 - Colocada SteelSmithing como sequencia de SmithingArts na ramificação Heavy
 - Criado ramificação para Orcish direto de SteelSmithing.
 - Removida a ligação de Dwearven para Orcish. Agora Steel apenas leva a Orcish
-- Criação do RANK 2 de OrcishSmithing: OrcishMastery 
+- Criação do RANK 2 de OrcishSmithing: OrcishMastery (buff baseado no material)
+- Criação do RANK 3 de OrcishSmithing: LegendaryOrcish(setado multiplicador 		ModifyTemperedHealth em 2.0 - garante melhoria "Superior")
+- Criação do Efeito de DATH_AB_Armorset_Stamina1 que aplica um efeito de aumento de stamina em armaduras de metal orcish. O efeito estaca de duas a 4 peças 
