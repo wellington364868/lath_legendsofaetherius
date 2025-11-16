@@ -1,0 +1,12 @@
+
+
+- criado o script base para aprendizado por livros. O script é anexado a livro de magia
+- Alterado o código para que todas as variáveis sejam hardcoded afim de evitar savebloat
+- bônus fixos de localização: winterhold, apocrypha, playerHouse
+- bônus se é dia, noite. Se está chovendo, nevando ou tempo limpo
+- bônus de "bem decansado" baseado no magickeffect padrão vanilla
+- tempos de estudo defindos em: Novice-4h, Apprentice-8h, Adept-12h, Expert-16h, Master-20h. 
+- suporte a soulgems, itens e ingredientes como requisitos para estudo.
+- adicionado cooldown global de 24h + até 2h aleatórias.
+
+ 
