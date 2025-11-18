@@ -1,4 +1,6 @@
-
+TODO:
+- refazer o script de oakflesh usando a implementação de frostbite
+- refatorar o script de aprendizado
 
 - criado o script base para aprendizado por livros. O script é anexado a livro de magia
 - Alterado o código para que todas as variáveis sejam hardcoded afim de evitar savebloat
@@ -8,5 +10,10 @@
 - tempos de estudo defindos em: Novice-4h, Apprentice-8h, Adept-12h, Expert-16h, Master-20h. 
 - suporte a soulgems, itens e ingredientes como requisitos para estudo.
 - adicionado cooldown global de 24h + até 2h aleatórias.
+- criado um sistema que permite o upgrade de magias novice até adept
+- criado um sistema que permite o upgrade de magias apprentice até adept
+- o sistema de upagrade visa deixar as magias iniciais viáveis no endgame. Requer perks especificas para desbloquear. Utiliza o mesmo livro da magia inicial e após um novo tempo de estudo a magia anterior é removida e uma versão mais forte é adicionada. O principio é manter o custo baixo, mas com um poder um pouco maior mas nunca no  mesmo nível do novo tier.
+- criada a magia frostbite
+- Refeito o script DAT_SLS_IntialConfig. Agora o JFormDB suporta a configuração inicial de cada magia setando variáveis principais de controle que já podem ser lidas do script principal anexado ao livro.
 
  

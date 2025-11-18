@@ -81,12 +81,16 @@ Event OnRead()
     Spell learning_spell = Game.GetFormFromFile(spell_form_id, master_file) as Spell
     
     ;[APENAS PARA TESTE]verificar se Game.GetFormFile traz a referencia correta da spell
-    String spell_name_test = learning_spell.GetName()
-    Debug.Notification("Nome da magia: " + spell_name_test)
+    ;String spell_name_test = learning_spell.GetName()
+    ;Debug.Notification("Nome da magia: " + spell_name_test)
 
     ;Check if player knows the spell
 	if (Game.GetPlayer().HasSpell(learning_spell))
 			Debug.Notification("Voce sabe conjurar " + spell_name)
+            
+            ; Mostra apenas informações estáticas que podemos acessar via script
+            ;String msg = "Efeito: Aumenta a defesa física."
+            ;Debug.MessageBox(msg)
             return
     endif
 
@@ -161,10 +165,13 @@ Event OnRead()
         
 
         if rest_time > 12
-            Debug.Notification("Estudar magia drenou sua energia arcana. Descanse por um dia.")
+            Debug.Notification("Você deve descansar até amanhã. Os estudos arcanos pesam sua mente.")
         else 
-            Debug.Notification("Você ainda se sente drenado...")
-            Debug.Notification("Em " + Math.Floor(rest_time)  + " horas você possivelmente estará recuperado.")
+            if rest_time > 6
+                Debug.Notification("Você ainda se sente cansado mentalmente...")
+            else
+                Debug.Notification("Em " + Math.Floor(rest_time)  + " horas você provavelmente estará bem disposto.")
+            endif
         endif 
         Debug.Notification("Progresso total: " + Math.Floor( current_spell_progress * 100.0) + "%")
         return
@@ -219,6 +226,13 @@ Event OnRead()
 
     Debug.Notification("As runas antigas emitem um brilho suave...")
 
+    if (current_spell_progress * 100) < 25.0
+        Debug.Notification("Simbolos desconexos se embaralham...")
+    else 
+        Debug.Notification("Simbolos começam a fazer sentido...")
+    endif
+    
+
 
     ;==============================================================
     ;ANIMAÇÕES DE ESTUDO
@@ -257,20 +271,20 @@ Event OnRead()
     float bonus_time_sum = 1.0;
 
     if IsInApocrypha()
-        Debug.Notification("Apocrypha")
+        ;Debug.Notification("Apocrypha")
         bonus_time_sum = bonus_time_sum + 1.0
     else 
         ; --- Bônus por localização ---
         ; exemplo: Winterhold dá +15%
         if IsInWinterhold()
-            Debug.Notification("Winterhold")
+            ;Debug.Notification("Winterhold")
             bonus_time_sum = bonus_time_sum + 0.3
         else
             ;Check if player is in an inn or an owned home
             ;encontrado em Miscellaneous->Keyword
             Keyword LocTypePlayerHouse = Game.GetFormFromFile(0x0fc1a3, "Skyrim.esm") as Keyword
 	        if PlayerRef.GetCurrentLocation().HasKeyword(LocTypePlayerHouse)
-		        Debug.Notification("Playerhouse")
+		        ;Debug.Notification("Playerhouse")
                 bonus_time_sum = bonus_time_sum + 0.1
             endif
 	    endIf
@@ -279,17 +293,17 @@ Event OnRead()
         float current_time = Utility.GetCurrentGameTime()  ; dias decimais
         float current_hour = (current_time - Math.Floor(current_time)) * 24.0  ; hora do dia 0-24
 
-        Debug.Notification("hora do dia: " + current_hour)
+        ;Debug.Notification("hora do dia: " + current_hour)
         if has_night_bonus 
             if ((current_hour >= 20.0  && current_hour <=24.0) || (current_hour >=0 && current_hour <= 4.0) )
-                Debug.Notification("Noite")
+                ;Debug.Notification("Noite")
                 bonus_time_sum += 0.1
             endif
         endif
 
         if has_day_bonus
             if(current_hour >= 6.0 && current_hour <= 18.0)
-                Debug.Notification("Dia")
+                ;Debug.Notification("Dia")
                 bonus_time_sum = bonus_time_sum + 0.1
             
             endif
@@ -298,13 +312,13 @@ Event OnRead()
         int current_weather = GetCurrentWeatherType()
 
         if has_clear_weather_bonus && current_weather == 0
-            Debug.Notification("Sunny")
+            ;Debug.Notification("Sunny")
             bonus_time_sum = bonus_time_sum + 0.1
         elseif has_rainy_weather_bonus && current_weather == 2
-            Debug.Notification("Rainy")
+            ;Debug.Notification("Rainy")
             bonus_time_sum = bonus_time_sum + 0.1
         elseif has_snow_weather_bonus && current_weather == 3
-            Debug.Notification("Snow")
+            ;Debug.Notification("Snow")
             bonus_time_sum = bonus_time_sum + 0.1
         endif 
 
@@ -318,7 +332,7 @@ Event OnRead()
     if PlayerRef.HasMagicEffect(WellRestedEffect)
         bonus_time_sum += 0.1
 
-        Debug.Notification("Bem Descansado")
+        ;Debug.Notification("Bem Descansado")
     endif
     
     

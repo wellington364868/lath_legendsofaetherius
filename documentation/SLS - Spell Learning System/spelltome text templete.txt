@@ -1,0 +1,79 @@
+<!-- Página 1: Nome da magia -->
+<P>
+    <CENTER>
+        <FONT SIZE="64"><B>[NOME_DA_MAGIA]</B></FONT> <!-- Nome da magia em destaque gigante -->
+    </CENTER>
+</P>
+<P>
+    <CENTER><B>[FRASE_TEMATICA_INICIAL]</B></CENTER> <!-- Frase inicial enigmática, centralizada -->
+</P>
+<P><BR><BR><BR></P> <!-- Espaço extra para simular quebra de página -->
+
+<!-- Página 2: Informações básicas -->
+<P>
+    <CENTER><B>[NOME_DA_MAGIA]</B></CENTER> <!-- Nome da magia menor, centralizado -->
+</P>
+<P>
+    Escola: <B>[ESCOLA]</B><BR> <!-- Escola da magia em negrito -->
+    Tier: <B>[TIER]</B><BR> <!-- Tier da magia em negrito -->
+    Tempo de estudo: <B>[HORAS_ESTUDO]</B> <!-- Tempo de estudo em horas, negrito -->
+</P>
+<P><B>[FRASE_TEMATICA_1]</B></P> <!-- Frase temática 1, enigmática -->
+
+<!-- Página 3: Descrição -->
+<P>
+    <B>Descrição:</B><BR>
+    [FUNÇÃO/EFETOS_DA_MAGIA] <!-- Explicação da magia, efeitos e funções -->
+</P>
+<P><B>[FRASE_TEMATICA_2]</B></P> <!-- Frase temática 2, estilo arcaico/enigmático -->
+
+<!-- Página 4: Requisitos de estudo -->
+<P>
+    <B>Requisitos de estudo:</B><BR>
+    Energia Arcana mínima: [MAGICKA_REQUERIDA]<BR>
+    [Soul Gem necessária]: [QUANTIDADE]<BR>
+    [Item(s) necessário(s)]: [QUANTIDADE]
+</P>
+<P><B>[FRASE_TEMATICA_3]</B></P> <!-- Frase temática 3, alerta ou sugestão sutil -->
+
+<!-- Página 5: Ritual de estudo -->
+<P>
+    <B>Ritual de estudo:</B><BR>
+    - Escolher um local silencioso ou sagrado.<BR>
+    - Ter os componentes à mão.<BR>
+    - Permitir que o fluxo arcano guie a mente e o corpo.
+</P>
+<P><B>[FRASE_TEMATICA_4]</B></P> <!-- Frase temática 4, sugestão de imersão -->
+
+<!-- Página 6: Condições e sugestões enigmaticas -->
+<P>
+    <B>Locais e condições que podem favorecer o estudo:</B><BR>
+    - Dizem que estudar em [LOCAL_1] ajuda o conhecimento a fluir.<BR>
+    - Lendas afirmam que [LOCAL_2] revela segredos ocultos.<BR>
+    - Climas ou eventos especiais parecem intensificar a conexão com a magia.<BR>
+    - O descanso e a meditação fortalecem a percepção arcana.
+</P>
+<P><B>[FRASE_TEMATICA_5]</B></P> <!-- Frase temática 5, sugestão de ambiente ou clima mágico -->
+
+<!-- Página 7: Atenção / Limitações (opcional) -->
+<P>
+    <B>Atenção:</B><BR>
+    - Não é recomendada a prática em combate intenso.<BR>
+    - Pode falhar contra forças que anulam magia.<BR>
+    - Respeitar limites físicos e mentais durante o estudo.
+</P>
+<P><B>[FRASE_TEMATICA_AVISO]</B></P> <!-- Frase final de alerta/enigma -->
+
+<!-- Página 8: Notas e potencial de aprimoramento (última página) -->
+<P>
+    <B>Notas e potencial de aprimoramento:</B><BR>
+    - Progressão de aprendizado medida em horas de estudo acumuladas.<BR>
+    - A magia é dominada quando o progresso atinge seu ponto máximo.<BR>
+    - Após o estudo, recomenda-se descanso e reflexão.
+</P>
+<P>
+    <B>Com dedicação, [NOME_DA_MAGIA] pode ser aprimorada, atingindo níveis que desafiam o conhecimento comum. 
+    O verdadeiro mago percebe que maestria exige prática, concentração e a descoberta de segredos ocultos. 
+    O céu e as constelações revelam os segredos de Aetherius. Talvez a estrela certa possa revelar um poder oculto.
+    O restante do texto parece apagado...</B>
+</P>
