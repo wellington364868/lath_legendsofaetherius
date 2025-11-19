@@ -41,3 +41,11 @@ SMTHING
 - Criação do RANK 3 de OrcishSmithing: LegendaryOrcish(setado multiplicador 		ModifyTemperedHealth em 2.0 - garante melhoria "Superior")
 - Criação do Efeito de DATH_AB_Armorset_Stamina1 que aplica um efeito de aumento de stamina em armaduras de metal orcish. O efeito estaca de duas a 4 peças 
 - Criado o esqueleto de toda a arvore de Smithing incluindo Forsworn e Falmer. Ainda falta avaliar se faremos o mesmo como leather, hide e fur. Ou se escolhemos apenas um deles para dar um efeito especial
+
+-------------------------------------------------------------------------
+2025-11-18
+
+- Efeito para iron material - +10% de res. stagger por peça de iron
+- Efeito para steel material - +4% de res. a arrows 
+- Efeito para steelplate material - +4% de res. a armas de corte
+- Efeito para orcish material - +4% de res. a stagger + 6% de redução de chance de golpe 				critico inimigo por peça 
