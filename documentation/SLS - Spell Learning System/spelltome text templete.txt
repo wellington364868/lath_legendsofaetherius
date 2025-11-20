@@ -1,79 +1,88 @@
-<!-- Página 1: Nome da magia -->
-<P>
-    <CENTER>
-        <FONT SIZE="64"><B>[NOME_DA_MAGIA]</B></FONT> <!-- Nome da magia em destaque gigante -->
-    </CENTER>
-</P>
-<P>
-    <CENTER><B>[FRASE_TEMATICA_INICIAL]</B></CENTER> <!-- Frase inicial enigmática, centralizada -->
-</P>
-<P><BR><BR><BR></P> <!-- Espaço extra para simular quebra de página -->
+[Nome da magia em destaque]
+Frostbite
 
-<!-- Página 2: Informações básicas -->
-<P>
-    <CENTER><B>[NOME_DA_MAGIA]</B></CENTER> <!-- Nome da magia menor, centralizado -->
-</P>
-<P>
-    Escola: <B>[ESCOLA]</B><BR> <!-- Escola da magia em negrito -->
-    Tier: <B>[TIER]</B><BR> <!-- Tier da magia em negrito -->
-    Tempo de estudo: <B>[HORAS_ESTUDO]</B> <!-- Tempo de estudo em horas, negrito -->
-</P>
-<P><B>[FRASE_TEMATICA_1]</B></P> <!-- Frase temática 1, enigmática -->
+[Frase inicial enigmatica]
+"O frio que consome carne e coragem, sussurrando segredos do vazio ártico."
 
-<!-- Página 3: Descrição -->
-<P>
-    <B>Descrição:</B><BR>
-    [FUNÇÃO/EFETOS_DA_MAGIA] <!-- Explicação da magia, efeitos e funções -->
-</P>
-<P><B>[FRASE_TEMATICA_2]</B></P> <!-- Frase temática 2, estilo arcaico/enigmático -->
+[Quebra de pagina]
 
-<!-- Página 4: Requisitos de estudo -->
-<P>
-    <B>Requisitos de estudo:</B><BR>
-    Energia Arcana mínima: [MAGICKA_REQUERIDA]<BR>
-    [Soul Gem necessária]: [QUANTIDADE]<BR>
-    [Item(s) necessário(s)]: [QUANTIDADE]
-</P>
-<P><B>[FRASE_TEMATICA_3]</B></P> <!-- Frase temática 3, alerta ou sugestão sutil -->
+[Informações básicas]
+    
+    Escola: Destruction
+    Tier: Novice
+    Tempo de estudo: 4 horas
+    Energia Arcana Minima: 80
 
-<!-- Página 5: Ritual de estudo -->
-<P>
-    <B>Ritual de estudo:</B><BR>
-    - Escolher um local silencioso ou sagrado.<BR>
-    - Ter os componentes à mão.<BR>
+   Tier: Improved (Equivale a Apprentice)
+   Tempo de estudo: 4 horas adicionais
+   Energia Arcana Mínima: 120
+   
+  Tier: Augumented (Equivale a Adept)
+  Tempo de estudo: 4 horas adicionais
+  Energia Arcana Mínima: 200
+
+
+[Frase enigimatica]
+As neves eternas guardam aquilo que o calor do mundo deseja esquecer
+
+
+[QUEBRA DE PAGINA]
+Descrição:
+
+Frostbite convoca o frio cortante para ferir o inimigo, diminuindo sua vida, drenando suas energias e retardando seus movimentos. 
+Com estudo persistente, o frio se intensifica, tornando o toque da magia quase tangível, como gelo vivo.
+
+[FRASE ENIGMATICA]
+"O vento que atravessa picos gelados sussurra em línguas esquecidas."
+
+
+[QUEBRA DE PAGINA]
+Requisitos de estudo:
+
+Soul Gem necessária: Petty Empty [1]
+Item(s) necessário(s):Snowberry [1]
+
+[FRASE ENIGMATICA]
+"Nem todos que buscam o frio podem suportar seu abraço; apenas aqueles de espírito firme podem prosseguir"
+
+
+Ritual de estudo:
+    - Escolher um local silencioso ou sagrado.
+    - Ter os componentes à mão.
     - Permitir que o fluxo arcano guie a mente e o corpo.
-</P>
-<P><B>[FRASE_TEMATICA_4]</B></P> <!-- Frase temática 4, sugestão de imersão -->
 
-<!-- Página 6: Condições e sugestões enigmaticas -->
-<P>
-    <B>Locais e condições que podem favorecer o estudo:</B><BR>
-    - Dizem que estudar em [LOCAL_1] ajuda o conhecimento a fluir.<BR>
-    - Lendas afirmam que [LOCAL_2] revela segredos ocultos.<BR>
-    - Climas ou eventos especiais parecem intensificar a conexão com a magia.<BR>
+[FRASE ENIGMATICA]
+"Deixe que a quietude da neve se infiltre em sua mente e revele o ritmo oculto do frio."
+
+
+[SUGESTOES DE ESTUDO]
+Locais e condições que podem favorecer o estudo:
+    - Dizem que estudar em Winterhold ajuda o conhecimento a fluir.
+    - Lendas afirmam que Apocrypha pode revelar segredos que o mundo mortal não poderia.
+    - Climas nevados parecem intensificar a conexão com a magia.
     - O descanso e a meditação fortalecem a percepção arcana.
-</P>
-<P><B>[FRASE_TEMATICA_5]</B></P> <!-- Frase temática 5, sugestão de ambiente ou clima mágico -->
 
-<!-- Página 7: Atenção / Limitações (opcional) -->
-<P>
-    <B>Atenção:</B><BR>
-    - Não é recomendada a prática em combate intenso.<BR>
-    - Pode falhar contra forças que anulam magia.<BR>
+[FRASE ENIGMATICA]
+"gelo não se limita ao corpo; ele se entranha na mente, aguardando o momento de se revelar."
+
+
+    Atenção:
+    - Não é recomendada a prática em combate intenso.
+    - Pode falhar contra forças que anulam magia.
     - Respeitar limites físicos e mentais durante o estudo.
-</P>
-<P><B>[FRASE_TEMATICA_AVISO]</B></P> <!-- Frase final de alerta/enigma -->
 
-<!-- Página 8: Notas e potencial de aprimoramento (última página) -->
-<P>
-    <B>Notas e potencial de aprimoramento:</B><BR>
-    - Progressão de aprendizado medida em horas de estudo acumuladas.<BR>
-    - A magia é dominada quando o progresso atinge seu ponto máximo.<BR>
+[FRASE ENIGMATICA]
+O frio é paciente e implacável; subestimá-lo é convidar a própria perdição.
+
+[QUEBRA DE PAGINA]
+
+    Notas e potencial de aprimoramento:
+    - Progressão de aprendizado medida em horas de estudo acumuladas.
+    - A magia é dominada quando o progresso atinge seu ponto máximo.
+    - Com dedicação contínua, até magias inicialmente fracas podem revelar novas profundezas de poder.
     - Após o estudo, recomenda-se descanso e reflexão.
-</P>
-<P>
-    <B>Com dedicação, [NOME_DA_MAGIA] pode ser aprimorada, atingindo níveis que desafiam o conhecimento comum. 
+
+    Com dedicação, Frostbite pode ser aprimorada, evoluindo em intensidade e refinamento. 
     O verdadeiro mago percebe que maestria exige prática, concentração e a descoberta de segredos ocultos. 
-    O céu e as constelações revelam os segredos de Aetherius. Talvez a estrela certa possa revelar um poder oculto.
-    O restante do texto parece apagado...</B>
-</P>
+    O céu e as constelações de Aetherius podem iluminar caminhos que só a paciência e o estudo prolongado permitem. 
+    Talvez a estrela certa revele um poder oculto, esperando o momento de despertar.

@@ -1,4 +1,4 @@
-Scriptname DATH_SLS_Frostbite_ST extends ObjectReference  
+Scriptname DATH_SLS_Flames extends ObjectReference  
 
 
 Event OnRead()
@@ -9,19 +9,81 @@ Event OnRead()
         return
     endif
 
-    ;id usado no JFormDB
-    String spell_id = "frostbite"
-    ;tier atual da magia
-    String current_spell_tier = JFormDB.getStr(PlayerRef, ".dath.sls.spells." + spell_id + ".tier.current")
-    ;nome usado em mensagens para o usuario
-    String spell_name = JFormDB.getStr(PlayerRef, ".dath.sls.spells." + spell_id + ".name")
-    ;FormId da magia
-    Int spell_form_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".form_id")
+    ;obtem o form id da spell de acordo com o tier de upgrade atual
+    ;Int spell_form_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".form_id")
     ;Arquivo esm/esp/esl onde a magia está definida
     String skyrim_file = "Skyrim.esm"
     ;Arquivo .esp DATH
     String dath_file = "DATH_DawnOfAetherius.esp"
 
+     ;id usado no JFormDB
+    String spell_id = "flames"
+
+    bool can_study = false
+
+    ;para pegar o FORMID pelo CK, exclua os 2 primeiros digitos
+    ;ex: se no CK estiver 0205ab45, entao o codigo será: 05ab45
+    Spell learning_spell = none
+
+    ;Perk - Augumented Flames
+    Perk  apprentice_upgrade_perk = Game.GetFormFromFile(0x0581e7, skyrim_file) as Perk
+
+    ;Perk - Augumented Flames60
+    Perk  adept_upgrade_perk = Game.GetFormFromFile(0x10fcf8, skyrim_file) as Perk
+    
+    ;tier atual da magia
+    String current_spell_tier = JFormDB.getStr(PlayerRef, ".dath.sls.spells." + spell_id + ".tier.current")
+    Debug.Notification("current_spell_tier: " + current_spell_tier)
+
+    if current_spell_tier == "novice"
+        
+        
+        int base_spell_form_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + ".novice.form_id")
+        Debug.Notification("base_spell_form_id: " + base_spell_form_id)
+        ;versao base definida em Skyrim.esm, por padrão pode estudar
+        learning_spell = Game.GetFormFromFile(base_spell_form_id, skyrim_file) as Spell
+
+        ;se tiver começado com a magia novice ou aprendeu de alguma outra forma
+        if PlayerRef.HasSpell(learning_spell)
+            Debug.Notification("tem: " + learning_spell.GetName())
+            current_spell_tier = "apprentice"
+        else 
+            ;se o tier é "novice" e não tem a magia entao é liberado para aprender
+            can_study = true
+        endif
+    endif
+
+    if current_spell_tier == "apprentice"
+
+        int spell_form_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + ".apprentice.form_id")
+        ;versao apprentice definida em DATH
+        learning_spell = Game.GetFormFromFile(spell_form_id, dath_file) as Spell
+
+        ;se a perk necessaria estiver desbloqueada
+        if PlayerRef.HasPerk(apprentice_upgrade_perk)
+            can_study = true
+        endif
+
+    elseif current_spell_tier == "adept" 
+
+        int spell_form_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + ".adept.form_id")
+        ;versao adept definida em DATH
+        learning_spell = Game.GetFormFromFile(spell_form_id, dath_file) as Spell
+        
+        ;se a perk necessaria estiver desbloqueada
+        if PlayerRef.HasPerk(adept_upgrade_perk)
+            can_study = true
+        endif
+
+    endif
+
+
+
+    ;nome usado em mensagens para o usuario
+    String spell_name = JFormDB.getStr(PlayerRef, ".dath.sls.spells." + spell_id + ".name")
+    
+
+    
     ;Check if player has Max Magicka requiriment
     ;Novice - 80
     ;Apprentice - 160
@@ -30,25 +92,27 @@ Event OnRead()
     ;Master - 800
     ; Obtém o máximo de Magicka atual do jogador (incluindo buffs e equipamentos)
     Float player_magicka_max = PlayerRef.GetActorValue("Magicka")
+    
+    ;base para novice - dafault
     Float required_magicka = 80.0
 
     ;definição de variaveis de soul gems
-    bool use_soul_gem = true
-    int soul_gem_form_id = 0x02e4e2 
-    int soul_gem_amount = 1
-    String desc_required_soul_gem = "petty soul gem(empty)" 
+    Int use_soul_gem = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".material.soulgem.use")
+    int soul_gem_form_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".material.soulgem.form_id") 
+    int soul_gem_amount = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".material.soulgem.amount")
+    ;String desc_required_soul_gem = "petty soul gem(empty)" 
 
-    ;definição de variaveis de misc items
-    bool use_misc_item = false
-    int misc_item_form_id = 0x000000 
-    int misc_item_amount = 1
-    String desc_required_misc_item = "" 
+    ;definição de variaveis de item (encotrado em miscitem)
+    Int use_misc_item = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".material.item.use")
+    int misc_item_form_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".material.item.form_id")
+    int misc_item_amount = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".material.item.amount")
+    ;String desc_required_misc_item = "charcoal" 
 
     ;definição de ingredientes alquimicos
-    bool use_ingredient = true
-    int ingredient_form_id = 0x01b3bd 
-    int ingredient_amount = 1
-    String desc_required_ingredient = "snowberry" 
+    Int use_ingredient = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".material.ingredient.use")
+    int ingredient_form_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".material.ingredient.form_id")
+    int ingredient_amount = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".material.ingredient.amount")
+    ;String desc_required_ingredient = "" 
 
     ;encontrado em Special Effect-> ImageSpace Modifier
     ImageSpaceModifier  FadeToBlackBackImod = Game.GetFormFromFile(0x0f756f, skyrim_file) as ImageSpaceModifier
@@ -68,67 +132,20 @@ Event OnRead()
     bool has_rainy_weather_bonus = true
     bool has_snow_weather_bonus = true     
 
-    ;o tempo de estudo é baseado no tier da magia
-    ;tabela base
-    ;novice     - 4h
-    ;apprentice - 8h
-    ;adept      - 12h
-    ;expert     - 16h
-    ;master     - 20h
-    float base_study_hours = 4.0
-
-    ;1- Novice
-    ;2 - Apprentice
-    ;3 - Adept
-    ;4 - Expert
-    ;5 - Master
-    String base_spell_tier = "novice"
-
-    bool can_study = false
-
-    ;para pegar o FORMID pelo CK, exclua os 2 primeiros digitos
-    ;ex: se no CK estiver 0205ab45, entao o codigo será: 05ab45
-    Spell learning_spell = none
-
-    ;Perk - Augumented Frost
-    Perk  apprentice_upgrade_perk = Game.GetFormFromFile(0x0581ea, skyrim_file) as Perk
-
-    ;Perk - Augumented Frost60
-    Perk  adept_upgrade_perk = Game.GetFormFromFile(0x10fcf9, skyrim_file) as Perk
 
 
-    if current_spell_tier == "novice"
-        ;versao base definida em Skyrim.esm, por padrão pode estudar
-        learning_spell = Game.GetFormFromFile(spell_form_id, skyrim_file) as Spell
-        can_study = true
-    elseif current_spell_tier == "apprentice"
-        ;versao apprentice definida em DATH
-        learning_spell = Game.GetFormFromFile(0x023f26, dath_file) as Spell
-
-        ;se a perk necessaria estiver desbloqueada
-        if PlayerRef.HasPerk(apprentice_upgrade_perk)
-            can_study = true
-        endif
-
-    elseif current_spell_tier == "adept" 
-        ;versao adept definida em DATH
-        learning_spell = Game.GetFormFromFile(0x023f27, dath_file) as Spell
-        
-        ;se a perk necessaria estiver desbloqueada
-        if PlayerRef.HasPerk(adept_upgrade_perk)
-            can_study = true
-        endif
-    endif
+    Debug.Notification("Tier " + current_spell_tier)
 
     if PlayerRef.HasSpell(learning_spell)
 
         Debug.Notification("Voce sabe conjurar " + spell_name)
-        Debug.Notification("Tier " + current_spell_tier)
-        return 
-     
+        return
+
     endif
 
-        ; Checa se o jogador tem Magicka suficiente
+    ;obtem o valor atualizado de required magicka de acordo com o tier
+    required_magicka = JFormDB.getFlt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".required_magicka")
+    ; Checa se o jogador tem Magicka suficiente
     If player_magicka_max < required_magicka
         Debug.Notification("Você não possui energia arcana suficiente para aprender " + spell_name + ". (Requer: " + required_magicka + ")")
         Return
@@ -183,10 +200,12 @@ Event OnRead()
             JFormDB.setFlt(PlayerRef, ".dath.sls.fatigue.next_class_allowed", next_class_allowed)
         EndIf
 
-        ;verifica o progresso atual de aprendizado
-        float current_spell_progress = JFormDB.getFlt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".study.progress")
+        ;verifica o progresso atual de aprendizado. 
+        ;IMPORTANTE: deve ser resetada ao subir de tier
+        float current_spell_progress = JFormDB.getFlt(PlayerRef, ".dath.sls.spells." + spell_id +  ".study.current_progress")   
         ;obtem o total de horas necessarias para aprender a magia
-        float graduate = JFormDB.getFlt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".study.graduate")
+        ;este valor é fixo em qualquer upgrade
+        float graduate = JFormDB.getFlt(PlayerRef, ".dath.sls.spells." + spell_id +  ".study.graduate")
 
 
         if(current_spell_progress < 0.0)
@@ -205,14 +224,15 @@ Event OnRead()
         
 
             if rest_time > 12
-                Debug.Notification("Você deve descansar até amanhã. Os estudos arcanos pesam sua mente.")
+                Debug.Notification("Sua mente está exausta agora. Talvez deva estudar amanhã.")
             else 
-                if rest_time > 6
-                    Debug.Notification("Você ainda se sente cansado mentalmente...")
+                if rest_time > 5
+                    Debug.Notification("Você está se recuperando, mas sua mente ainda está cansada...")
                 else
-                    Debug.Notification("Em " + Math.Floor(rest_time)  + " horas você provavelmente estará bem disposto.")
+                    Debug.Notification("Talvez em " + Math.Floor(rest_time)  + " horas você esteja pronto para continuar.")
                 endif
             endif 
+            
             Debug.Notification("Progresso total: " + Math.Floor( (current_spell_progress/graduate) * 100) + "%")
             return
         endif
@@ -225,7 +245,7 @@ Event OnRead()
 
             SoulGem required_soul_gem = Game.GetFormFromFile(soul_gem_form_id, skyrim_file) as SoulGem
             if (PlayerRef.GetItemCount(required_soul_gem) < soul_gem_amount)
-                Debug.Notification("Voce precisa de " + desc_required_soul_gem + " para iniciar o estudo.")
+                Debug.Notification("Voce precisa de " + required_soul_gem.GetName() + " para iniciar o estudo.")
                 return
             endif
         endif
@@ -234,7 +254,7 @@ Event OnRead()
 
             MiscObject required_misc_item = Game.GetFormFromFile(misc_item_form_id, skyrim_file) as MiscObject
             if (PlayerRef.GetItemCount(required_misc_item) < misc_item_amount)
-                Debug.Notification("Voce precisa de " + desc_required_misc_item + " para iniciar o estudo.")
+                Debug.Notification("Voce precisa de " + required_misc_item.GetName() + " para iniciar o estudo.")
                 return
             endif
         endif
@@ -243,21 +263,21 @@ Event OnRead()
 
             Ingredient required_ingredient = Game.GetFormFromFile(ingredient_form_id, skyrim_file) as Ingredient
             if (PlayerRef.GetItemCount(required_ingredient) < ingredient_amount)
-                Debug.Notification("Voce precisa de " + desc_required_ingredient + " para iniciar o estudo.")
+                Debug.Notification("Voce precisa de " + required_ingredient.GetName() + " para iniciar o estudo.")
                 return
             endif
         endif
 
         ; === Consumir ===
-        if use_soul_gem
+        if use_soul_gem == 1 ;0: FALSE, 1: TRUE
             SoulGem required_soul_gem = Game.GetFormFromFile(soul_gem_form_id, skyrim_file) as SoulGem
             PlayerRef.RemoveItem(required_soul_gem, soul_gem_amount, True)
         endif
-        if use_misc_item
+        if use_misc_item == 1 ;0: FALSE, 1: TRUE
             MiscObject required_misc_item = Game.GetFormFromFile(misc_item_form_id, skyrim_file) as MiscObject
             PlayerRef.RemoveItem(required_misc_item, misc_item_amount, True)
         endIf
-        if use_ingredient
+        if use_ingredient == 1 ;0: FALSE, 1: TRUE
             Ingredient required_ingredient = Game.GetFormFromFile(ingredient_form_id, skyrim_file) as Ingredient
             PlayerRef.RemoveItem(required_ingredient, ingredient_amount, True)
         endIf
@@ -267,8 +287,10 @@ Event OnRead()
 
         if (current_spell_progress * 100) < 25.0
             Debug.Notification("Simbolos desconexos se embaralham...")
-        else 
+        elseif (current_spell_progress * 100) < 60.0
             Debug.Notification("Simbolos começam a fazer sentido...")
+        else 
+            Debug.Notification("Você sente uma estranha energia fluir pelo seu corpo...")
         endif
 
 
@@ -300,8 +322,11 @@ Event OnRead()
         Utility.Wait(2.5)
         FadeToBlackHoldImod.Apply()
 
-        ;o progresso real é um numero randomico entre 1 e 2
-        float study_progress = Utility.RandomFloat(1.0, 2.0)
+
+        float min_progress = JFormDB.getFlt(Game.GetPlayer(), ".dath.sls.spells." + spell_id + ".study.min_progress")
+        float max_progress = JFormDB.getFlt(Game.GetPlayer(), ".dath.sls.spells." + spell_id + ".study.max_progress")
+        ;o progresso real é um numero aleatorio entre min_progress e max_progress
+        float study_progress = Utility.RandomFloat(min_progress, max_progress)
 
         ;bonus de tempo
         float bonus_time_sum = 1.0;
@@ -360,7 +385,6 @@ Event OnRead()
 
         endif
 
-
         ; --- Bônus por estado do jogador ---
         ; Bem descansado +5%
         MagicEffect WellRestedEffect = Game.GetFormFromFile(0x10d96b, skyrim_file) as MagicEffect
@@ -386,7 +410,7 @@ Event OnRead()
         next_class_allowed = current_tamriel_time + base_cooldown / 24.0
         JFormDB.setFlt(PlayerRef, ".dath.sls.fatigue.next_class_allowed", next_class_allowed)
 
-        Debug.Notification("Você sente a mente cansada, talvez deva estudar novamente amanhã...") 
+        Debug.Notification("Estudar cansou sua mente, talvez deva estudar novamente amanhã...") 
     
         ;soma o progresso ganho nessa sessão de estudos ao que ja tinha antes
         float new_progress = current_spell_progress + progress_gain
@@ -405,39 +429,58 @@ Event OnRead()
         ; Reativa controles
         Game.EnablePlayerControls()
 
-
         ;verifica se o progresso total de horas é maior ou igual ao tempo de estudo necessário
         if new_progress >= graduate
-            PlayerRef.AddSpell(learning_spell)
+            ;PlayerRef.AddSpell(learning_spell)
 
             Debug.Notification("Você finalmente compreendeu as runas e diagramas...")
-            Debug.Notification("E agora sabe conjurar " + spell_name + "...")
-            JFormDB.setFlt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".study.progress", new_progress)
+            Debug.Notification("E agora sabe como usar " + spell_name + "...")
+            
+            ;reseta o progresso
+            JFormDB.setFlt(PlayerRef, ".dath.sls.spells." + spell_id + ".study.current_progress", 0.0)
 
             if current_spell_tier == "novice"
+                Int new_spell_id =  JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + ".novice.form_id")
+                Spell spell_to_add = Game.GetFormFromFile(new_spell_id, skyrim_file) as Spell 
+                PlayerRef.AddSpell(spell_to_add)
+
                 ;aumenta o tier da magia
                 JFormDB.setStr(PlayerRef, ".dath.sls.spells." + spell_id + ".tier.current", "apprentice")
                 
             elseif current_spell_tier == "apprentice"
-                ;aumenta o tier da magia
-                JFormDB.setStr(PlayerRef, ".dath.sls.spells." + spell_id + ".tier.current", "adept")
+
                 
-                ;remove a frostbite vanilla, apos ter adicionado a frostbite apprentice
-                Spell spell_to_remove = Game.GetFormFromFile(0x02b96b, skyrim_file) as Spell 
+                ;remove a magia vanilla, apos ter adicionado a magia apprentice
+                Int spell_to_remove_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + ".novice.form_id")
+                Spell spell_to_remove = Game.GetFormFromFile(spell_to_remove_id, skyrim_file) as Spell 
+                Debug.Notification("spell to remove: " + spell_to_remove.GetName())
                 PlayerRef.RemoveSpell(spell_to_remove)
 
+                Int new_spell_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + ".apprentice.form_id")
+                Spell spell_to_add = Game.GetFormFromFile(new_spell_id, dath_file) as Spell 
+                
+                
+                PlayerRef.AddSpell(spell_to_add)
+
+
+                                ;aumenta o tier da magia
+                JFormDB.setStr(PlayerRef, ".dath.sls.spells." + spell_id + ".tier.current", "adept")
+
             elseif current_spell_tier == "adept"
-                ;remove a frostbite apprentice. Nao aumenta o tier, o maior upgrade possivel é "adept"
-                Spell spell_to_remove = Game.GetFormFromFile(0x023f26, dath_file) as Spell 
+                ;remove a magia DATH versao apprentice, apos ter adicionado a magia DATH versao adept
+                Int spell_to_remove_id = JFormDB.getInt(PlayerRef, ".dath.sls.spells." + spell_id + ".apprentice.form_id")
+                Spell spell_to_remove = Game.GetFormFromFile(spell_to_remove_id, dath_file) as Spell 
                 PlayerRef.RemoveSpell(spell_to_remove)
             endif 
         else 
-            JFormDB.setFlt(PlayerRef, ".dath.sls.spells." + spell_id + "." + current_spell_tier + ".study.progress", new_progress)
+            JFormDB.setFlt(PlayerRef, ".dath.sls.spells." + spell_id + ".study.current_progress", new_progress)
         endif
+
     endif 
+
+
+
 EndEvent
-
-
 ;==================================================================
 ;WorldData -> Location
 Bool Function IsInApocrypha()

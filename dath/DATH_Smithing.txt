@@ -49,3 +49,12 @@ SMTHING
 - Efeito para steel material - +4% de res. a arrows 
 - Efeito para steelplate material - +4% de res. a armas de corte
 - Efeito para orcish material - +4% de res. a stagger + 6% de redução de chance de golpe 				critico inimigo por peça 
+- Criada a keyword DATH_ProjectilePhysical para colocar em arrows
+- Criada a FormList DATH_BoundWeaponsList para agrupar todas as bound weapons
+
+----------------------------------------------------------------------------
+2025-11-20
+
+- Remoçao do rank 3 de todos as perks de materiais de smithing
+- Criação da perk DATH_SmithingBasic adicionada via script de configuração que altera o ModifyTempererHealth para 0.1 de todos os materiais
+- A perk DATH_SmithingArts agora alterar o ModifyTempererHealth para 1.5 para todos os materiais

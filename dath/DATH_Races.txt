@@ -1,0 +1,6 @@
+
+2025-11-20
+----------------------------------------------------------------------------
+
+- Criado o script DATH_PSC_InitialConfig para modificarmos os atributos e racial abilities de todas as raças
+- Adicionada a perk DATH_SmithingBasic que altera o ModifyTempererHealth para 0.1 por padrao
