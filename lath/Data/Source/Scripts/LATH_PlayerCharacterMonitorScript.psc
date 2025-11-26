@@ -21,6 +21,11 @@ Event OnInit()
     JFormDB.setFlt(selfActor, ".lath.debug.hp.value.third", 0.0)
     JFormDB.setFlt(selfActor, ".lath.debug.hp.value.second", 0.0)
     JFormDB.setFlt(selfActor, ".lath.debug.hp.value.last", 0.0)
+
+    ;alvos
+    JFormDB.setFlt(selfActor, ".lath.debug.target.hp.value.third", 0.0)
+    JFormDB.setFlt(selfActor, ".lath.debug.target.hp.value.second", 0.0)
+    JFormDB.setFlt(selfActor, ".lath.debug.target.hp.value.last", 0.0)
 EndEvent
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
