@@ -2,8 +2,14 @@ Scriptname LATH_MGE_WeakeningFrost extends activemagiceffect
 
 
 
-Float Property DamageReduction  Auto  ; 10%
+
 Bool Property Applied = False Auto          ; flag interna para não reaplicar
+
+;Perk requirements
+;Perk Property Rank_1 Auto 
+;Perk Property Rank_2 Auto
+
+Float Property DamageReduction  Auto  ; 10%
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
     if akTarget == None
@@ -15,7 +21,6 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     ; aplicar redução de dano apenas uma vez
     if !Applied
         Float current_stamina_percent = akTarget.GetActorValuePercentage("Stamina")
-
 
         akTarget.ModActorValue("AttackDamageMult", -DamageReduction)
         Applied = True

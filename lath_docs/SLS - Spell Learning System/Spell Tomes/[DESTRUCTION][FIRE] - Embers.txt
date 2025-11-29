@@ -1,0 +1,78 @@
+
+<font face'$HandwrittenFont'><font size='40'><p align='center'>
+Embers
+<b>Dispara um jato contínuo de fogo que causa dano por segundo e pode superaquecer o alvo.</b>
+
+<font face'$HandwrittenFont'><font size='16'><p align='center'>
+"O calor reside mesmo quando a chama parece dormir."
+
+<font size='24'>
+<b>Embers</b>
+
+Tier: Novice
+Tempo de estudo: 4 horas
+Magicka mínima necessária: 80
+
+Requisitos de estudo:
+
+Soul Gem necessária: Petty Empty [1]
+
+Item(s) necessário(s): Charcoal [1]
+
+"Toda brasa começa com um sopro tímido, mas carrega o eco de um incêndio."
+
+Embers Enhanced
+
+Tier: Apprentice
+Tempo de estudo: mais 4 horas
+Magicka mínima necessária: 150
+
+Requisitos de estudo:
+
+Soul Gem necessária: Lesser Empty [1]
+
+Item(s) necessário(s): Charcoal [1]
+
+"A chama que persiste aprende a queimar para dentro."
+
+Embers Augmented
+
+Tier: Adept
+Tempo de estudo: mais 4 horas
+Magicka mínima necessária: 250
+
+Requisitos de estudo:
+
+Soul Gem necessária: Common Empty [1]
+
+Item(s) necessário(s): Charcoal [1]
+
+"Entre a luz e as cinzas há um poder que só responde ao toque do paciente."
+
+Ritual de estudo:
+
+Escolher um local silencioso ou sagrado.
+
+Ter os componentes à mão.
+
+Permitir que o fluxo arcano guie a mente e o corpo.
+
+Recomendações:
+
+- estudar em Winterhold
+
+- estudar em Apocrypha
+
+- estudar em casa
+
+- estudar em dias ensolarados
+
+- estudar bem descansado
+
+"Quando a brasa desperta, não pergunta quem a acendeu — apenas consome o que é digno."
+
+========================================================================
+; VERSAO FORMATA PARA O CK
+========================================================================
+
+Então seria coerente usarmos valores médios para estimar o máximo Alcansavel com equipamentos? Exemplo: um mago de Endgame poderia Alcancar 150 de mágica extra com equipamentos encantados e mais 50 através de poções sem ter que maximizar alquimia e encantamento

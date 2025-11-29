@@ -45,6 +45,18 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
 
     float weather_factor = 0.0
 
+    ; --- mesmo se o clima for adequado, o bonus nao deve ser aplicado a noite
+    float current_time = Utility.GetCurrentGameTime()  ; dias decimais
+    float current_hour = (current_time - Math.Floor(current_time)) * 24.0  ; hora do dia 0-24
+
+    ;Debug.Notification("hora do dia: " + current_hour)
+   
+    if(current_hour < 6.0 || current_hour > 19.0)
+        Debug.Notification("Noite")
+        return
+            
+    endif
+
     if current_weather == 0
         if PlayerRef.HasPerk(Weather_2)
             weather_factor =  0.5

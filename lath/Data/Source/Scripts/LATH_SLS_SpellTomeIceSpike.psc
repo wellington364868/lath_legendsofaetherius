@@ -1,0 +1,1 @@
+Scriptname LATH_SLS_SpellTomeIceSpike extends ObjectReference  

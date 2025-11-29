@@ -1,0 +1,163 @@
+
+================================================================================
+
+TEMPLATE DE GRIMÓRIO (CREATION KIT / SKYRIM BOOKS)
+
+INSTRUÇÕES:
+
+Substitua todo o texto entre colchetes (Ex: [NOME_DA_MAGIA]) pelo seu conteúdo.
+
+Altere o [COR_HEX] (Ex: #0000FF para Gelo, #FFD700 para Raio).
+
+As tags <font> foram combinadas corretamente (ex: face, size e color na mesma tag) para evitar bugs de aninhamento.
+
+Use [pagebreak] para forçar a quebra de página no jogo.
+
+Magicka Mínima: Mantive os seus valores (60, 160, 260) conforme definidos.
+-->
+
+===================================================================================
+
+<p align='center'><font face='$HandwrittenFont' color='[COR_HEX]' size='40'>
+[NOME_DA_MAGIA]
+</font>
+</p>
+
+[pagebreak]
+
+
+
+<p align='left'>
+<font face='$SkyrimBooks' size='20'>
+[DESCRICAO OBJETIVA DO QUE A MAGIA FAZ: Ex: Dispara um jato contínuo de...]
+</font>
+</p>
+
+<p align='center'>
+<font face='$HandwrittenFont' size='20'>
+"[CITAÇÃO_INICIAL: O calor reside mesmo quando a chama parece dormir.]"
+</font>
+</p>
+
+[pagebreak]
+
+
+<p align='center'>
+<font size='24' color='[COR_HEX]'>[NOME_DA_MAGIA]</font>
+</p>
+
+<p align='left'>
+<font face='$SkyrimBooks'>
+Tier: Novice
+Tempo de Estudo: 4 horas
+Magicka Mínima Necessária: 60
+
+
+
+Requisitos de Estudo:
+
+
+Soul Gem necessária: Petty Empty [1]
+
+Item necessário: [REQUISITO_ITEM_1] [1]
+</font>
+</p>
+
+<p align='center'>
+<font face='$HandwrittenFont' size='20'>
+"[CITAÇÃO_NOVICE: Toda brasa começa com um sopro tímido...]"
+</font>
+</p>
+
+[pagebreak]
+
+
+<p align='center'>
+<font size='24' color='[COR_HEX]'>[NOME_DA_MAGIA] Enhanced</font>
+</p>
+
+<p align='left'>
+<font face='$SkyrimBooks'>
+Tier Equivalente: Apprentice
+Tempo de estudo: mais 4 horas
+Magicka mínima necessária: 160
+
+
+Requisitos de estudo:
+
+Soul Gem necessária: Lesser Empty [1]
+
+Item(s) necessário(s): [REQUISITO_ITEM_2] [1]
+</font>
+</p>
+
+<p align='center'>
+<font face='$HandwrittenFont' size='20'>
+"[CITAÇÃO_APPRENTICE: A chama que persiste aprende a queimar para dentro.]"
+</font>
+</p>
+
+[pagebreak]
+
+
+<p align='center'>
+<font size='24' color='[COR_HEX]'>[NOME_DA_MAGIA] Augmented</font>
+</p>
+
+<p align='left'>
+<font face='$SkyrimBooks'>
+Tier: Adept
+Tempo de estudo: mais 4 horas
+Magicka mínima necessária: 260
+
+
+Requisitos de estudo:
+
+
+Soul Gem necessária: Common Empty [1]
+
+
+Item(s) necessário(s): [REQUISITO_ITEM_3] [1]
+</font>
+</p>
+
+<p align='center'>
+<font face='$HandwrittenFont' size='20'>
+"[CITAÇÃO_ADEPT: Entre a luz e as cinzas há um poder...]"
+</font>
+</p>
+
+[pagebreak]
+
+<!-- RITUAL E CONSELHOS DE ESTUDO (Final) -->
+
+<p align='left'>
+<font face='$SkyrimBooks' size='24'>Ritual de estudo:
+
+Escolher um local silencioso ou sagrado.
+Ter os componentes à mão.
+Permitir que o fluxo arcano guie a mente e o corpo.
+
+
+
+Conselhos de um bom estudante:
+
+
+- estudar em Winterhold
+
+- estudar em Apocrypha(dizem as lendas...)
+
+- estudar em casa
+
+- estudar em dias ensolarados
+
+- estudar bem descansado
+
+</font>
+</p>
+
+<p align='center'>
+<font face='$HandwrittenFont' size='20'>
+"[Frase enigmática de encerrameto: Quando a brasa desperta, não pergunta quem a acende - apenas consome o que é digno.]"
+</font>
+</p>
