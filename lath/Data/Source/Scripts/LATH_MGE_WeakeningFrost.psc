@@ -16,6 +16,11 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
         return
     endif
 
+    ; Verifica se o alvo está morto
+    if akTarget.IsDead()
+        return    ; não faz nada se o alvo estiver morto
+    endif
+
     Debug.Notification("Efeito iniciado")
 
     ; aplicar redução de dano apenas uma vez

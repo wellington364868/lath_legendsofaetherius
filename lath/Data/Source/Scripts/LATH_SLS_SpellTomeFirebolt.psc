@@ -1,8 +1,8 @@
-Scriptname LATH_SLS_SpellTomeEmbers extends ObjectReference  
-
+Scriptname LATH_SLS_SpellTomeFirebolt extends ObjectReference  
 
 
 Event OnRead()
+
     Actor PlayerRef = Game.GetPlayer()
 
     if !PlayerRef 
@@ -17,7 +17,7 @@ Event OnRead()
     String lath_file = "LATH_LegendsOfAetherius.esp"
 
      ;id usado no JFormDB
-    String spell_id = "embers"
+    String spell_id = "firebolt"
 
     bool can_study = false
 
@@ -30,8 +30,6 @@ Event OnRead()
     ;tier maximo disponivel para upgrade
     Int max_spell_tier = JFormDB.getInt(PlayerRef, ".lath.sls.spells." + spell_id + ".tier.max")
 
-
-
     int base_spell_form_id = 0
 
     ;0 - sem definicao de tier
@@ -40,17 +38,10 @@ Event OnRead()
     ;3 - adept
     ;4 - expert
     ;5 - master
-    if current_spell_tier == 1
-       base_spell_form_id = JFormDB.getInt(PlayerRef, ".lath.sls.spells." + spell_id + ".1.form_id")
-
-       ;spell definida em LATH
-       learning_spell = Game.GetFormFromFile(base_spell_form_id, lath_file) as Spell
-
-
-    elseif current_spell_tier == 2
+    if current_spell_tier == 2
        base_spell_form_id = JFormDB.getInt(PlayerRef, ".lath.sls.spells." + spell_id + ".2.form_id")
 
-       learning_spell = Game.GetFormFromFile(base_spell_form_id, lath_file) as Spell
+       learning_spell = Game.GetFormFromFile(base_spell_form_id, skyrim_file) as Spell
 
     elseif current_spell_tier == 3 
        base_spell_form_id = JFormDB.getInt(PlayerRef, ".lath.sls.spells." + spell_id + ".3.form_id")
@@ -78,7 +69,6 @@ Event OnRead()
     endif
  
     Debug.Notification("current_spell_tier: " + current_spell_tier)
-
 
     ;Check if player has Max Magicka requiriment
     ;Novice - 60
@@ -387,7 +377,7 @@ Event OnRead()
 
         ;o ganho real é um numero aleatorio mutiplicado pelo somatorio dos bonus(winterhold, bem-alimentado, bem-descansado, dia, noite, etc)
         float progress_gain = study_progress * study_bonus_mult    
-        
+
         ;Debug.Notification("Progresso: " + Math.Floor(progress_gain * 100.0) + "%")
 
         ;float cooldownNextTimeLesson = studyHours * 2.0
@@ -437,25 +427,10 @@ Event OnRead()
             ;reseta o progresso
             JFormDB.setFlt(PlayerRef, ".lath.sls.spells." + spell_id + ".study.current_progress", 0.0)
 
-            if current_spell_tier == 1
-                Int new_spell_id =  JFormDB.getInt(PlayerRef, ".lath.sls.spells." + spell_id + ".1.form_id")
-                Debug.Notification("spell form_id: " + new_spell_id)
-                Spell spell_to_add = Game.GetFormFromFile(new_spell_id, lath_file) as Spell 
-                
-                Debug.Notification("spell to add: " + spell_to_add.GetName())
-                PlayerRef.AddSpell(spell_to_add)
-
-                ;aumenta o tier da magia
-                JFormDB.setInt(PlayerRef, ".lath.sls.spells." + spell_id + ".tier.current", 2) ;apprentice
-            elseif current_spell_tier == 2
-                ;remove a magia novice, apos ter adicionado a magia apprentice
-                Int spell_to_remove_id = JFormDB.getInt(PlayerRef, ".lath.sls.spells." + spell_id + ".1.form_id")
-                Spell spell_to_remove = Game.GetFormFromFile(spell_to_remove_id, lath_file) as Spell 
-                Debug.Notification("spell to remove: " + spell_to_remove.GetName())
-                PlayerRef.RemoveSpell(spell_to_remove)
+            if current_spell_tier == 2 
 
                 Int new_spell_id = JFormDB.getInt(PlayerRef, ".lath.sls.spells." + spell_id + ".2.form_id")
-                Spell spell_to_add = Game.GetFormFromFile(new_spell_id, lath_file) as Spell 
+                Spell spell_to_add = Game.GetFormFromFile(new_spell_id, skyrim_file) as Spell 
                                 
                 PlayerRef.AddSpell(spell_to_add)
 
@@ -465,7 +440,7 @@ Event OnRead()
             elseif current_spell_tier == 3
                 ;remove a magia LATH versao apprentice, apos ter adicionado a magia DATH versao adept
                 Int spell_to_remove_id = JFormDB.getInt(PlayerRef, ".lath.sls.spells." + spell_id + ".2.form_id") ;apprentice
-                Spell spell_to_remove = Game.GetFormFromFile(spell_to_remove_id, lath_file) as Spell 
+                Spell spell_to_remove = Game.GetFormFromFile(spell_to_remove_id, skyrim_file) as Spell 
                 PlayerRef.RemoveSpell(spell_to_remove)
 
                 Int new_spell_id = JFormDB.getInt(PlayerRef, ".lath.sls.spells." + spell_id + ".3.form_id")
@@ -481,7 +456,6 @@ Event OnRead()
         Debug.Notification("Progresso: " + Math.Floor( (new_progress /graduate) * 100) + "%")
 
     endif
-
 EndEvent
 
 ;==================================================================
@@ -541,6 +515,5 @@ Int Function GetCurrentWeatherType()
                 return 6
             endif
         endif
-
 
 EndFunction

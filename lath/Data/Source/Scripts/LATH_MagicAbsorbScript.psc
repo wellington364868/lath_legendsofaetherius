@@ -1,8 +1,6 @@
-Scriptname LATH_MGE_ArcaneDischargeScript extends activemagiceffect  
-
-
-Float Property BaseValue Auto           ; valor base da spell
-
+Scriptname LATH_MagicAbsorbScript extends activemagiceffect  
+Float Property BaseCost Auto           ; valor base da spell
+Float Property MaxPercent = 0.5 Auto  ; 50% por padrão
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
 
@@ -10,15 +8,10 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
         return
     endif
 
-    ; Verifica se o alvo está morto
-    if akTarget.IsDead()
-        return    ; não faz nada se o alvo estiver morto
-    endif
-
     ; ===========================================================
     ; 1) Cálculo do valor máximo do efeito
     ; ===========================================================
-    float maxValue = BaseValue
+    float maxValue = BaseCost * MaxPercent
     if maxValue <= 0
         return
     endif
@@ -27,11 +20,14 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     ; 2) Geração de valores aleatórios
     ; ===========================================================
     float refundToPlayer = Utility.RandomFloat(1.0, maxValue)
+    float damageHealth = Utility.RandomFloat(1.0, BaseCost)
 
     ; ===========================================================
     ; 3) Aplicação dos efeitos
     ; ===========================================================
     akCaster.RestoreActorValue("Magicka", refundToPlayer)
+    akTarget.DamageActorValue("Health", damageHealth)
 
-    Debug.Notification("Max Refund: " + BaseValue +  ", Refunded: " + refundToPlayer)
+    Debug.Notification("Player: " + refundToPlayer)
+    Debug.Notification("Target: " + damageHealth)
 EndEvent
