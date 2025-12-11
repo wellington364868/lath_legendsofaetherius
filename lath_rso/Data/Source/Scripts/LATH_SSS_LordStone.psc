@@ -3,7 +3,6 @@ Scriptname LATH_SSS_LordStone extends activemagiceffect
 
 Float appliedFlatHP = 0.0
 Float appliedPercentHP = 0.0
-Float appliedPhysRes = 0.0
 Float appliedMagRes = 0.0
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
@@ -25,20 +24,20 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     ;Float baselineMag = akTarget.GetBaseActorValue("MagicResist")
 
     ; Flat baseado no level
-    appliedFlatHP = akTarget.GetLevel() * 1.0
+    appliedFlatHP = 100.0
+    appliedFlatHP = appliedFlatHP + akTarget.GetLevel() * 1.0
 
     ; Percentual baseado na base
     appliedPercentHP = baselineHP * PercentHP
-    appliedPhysRes = 10.0
     ;appliedMagRes = 5.0; 5% de resistencia magica
 
     ; Aplicar flat e percentual
     akTarget.ModActorValue("Health", appliedFlatHP)
     akTarget.ModActorValue("Health", appliedPercentHP)
-    akTarget.ModActorValue("DamageResist", appliedPhysRes)
+
     ;akTarget.ModActorValue("MagicResist", appliedMagRes)
 
-    Debug.Notification("LordStone: +" + Math.Floor(appliedFlatHP) + " HP by level, +" + Math.Floor(appliedPercentHP) + " HP, +"  + Math.Floor(appliedPhysRes) + " Physical Res.")
+    Debug.Notification("LordStone: +100 Health, + " + akTarget.GetLevel() + " HP by level, +" + Math.Floor(appliedPercentHP) + " HP")
 
 EndEvent
 
@@ -51,12 +50,11 @@ Event OnEffectFinish(Actor akTarget, Actor akCaster)
     ; Remover exatamente o que foi aplicado
     akTarget.ModActorValue("Health", -appliedPercentHP)
     akTarget.ModActorValue("Health", -appliedFlatHP)
-    akTarget.ModActorValue("DamageResist", -appliedPhysRes)
+
     ;akTarget.ModActorValue("MagicResist", -appliedMagRes)
 
     ; Resetar variáveis
     appliedFlatHP = 0.0
     appliedPercentHP = 0.0
-    appliedPhysRes = 0.0
 
 EndEvent

@@ -16,9 +16,9 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     endif
 
     ; Percentuais
-    Float PercentMP = 0.10          ; +10% Magicka
+    Float PercentMP = 0.20          ; +20% of base Magicka
     Float MagicResist = 10.0      ; +10 Resist Magic
-    Float PercentRegen = 0.20       ; +20% MagickaRegen
+    Float PercentRegen = 0.10       ; +10% MagickaRegen
 
     ; Baseline antes de mods
     Float baselineMP = akTarget.GetBaseActorValue("Magicka")
@@ -26,7 +26,7 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     Float baselineRegen = akTarget.GetBaseActorValue("MagickaRate")
 
     ; Flat baseado no nível
-    appliedFlatMP = akTarget.GetLevel() * 1.0
+    appliedFlatMP = (Math.Ceiling(akTarget.GetLevel() * 0.5))
 
     ; Percentual sobre base
     appliedPercentMP = baselineMP * PercentMP

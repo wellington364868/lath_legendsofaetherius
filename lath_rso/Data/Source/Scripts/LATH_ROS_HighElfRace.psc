@@ -39,7 +39,7 @@ Float RaceSpeedMult = 0.0
 Float RaceCarryWeight = 0.0
 Float RaceHPRegen = 0.0
 Float RaceStaminaRegen = 0.0
-Float RaceMagickaRegen = 0.5       ;+50% Magicka regen.
+Float RaceMagickaRegen = 0.4       ;+40% Magicka regen.
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
 

@@ -24,8 +24,9 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     Float baselineMP = akTarget.GetBaseActorValue("Magicka")
 
     ; Flat baseado no nível
-    appliedFlatHP = Math.Ceiling( akTarget.GetLevel() * 0.5)
-    appliedFlatMP = akTarget.GetLevel() * 0.5 ; se quiser +1 MP por nível também
+    appliedFlatHP = 50.0
+    appliedFlatHP = appliedFlatHP + Math.Ceiling( akTarget.GetLevel() * 0.5)
+    appliedFlatMP = 0.0
 
     ; Percentual sobre base
     appliedPercentHP = baselineHP * PercentHP

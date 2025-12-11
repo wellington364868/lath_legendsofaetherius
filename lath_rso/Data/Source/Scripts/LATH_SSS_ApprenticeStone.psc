@@ -16,11 +16,11 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     ;------------------------------
     ; MAGICKA
     ;------------------------------
-    Float PercentAmount = 0.10 ; +10% da base
+    Float PercentAmount = 0.20 ; +20% da base
     Float baselineMP = akTarget.GetBaseActorValue("Magicka")
 
-    ; Flat aplicado: 50 + 1.0 por nível
-    appliedFlatMP = 50.0 + (akTarget.GetLevel() * 1.0)
+    ; Flat aplicado: 50 + 1.0 por cada 2 nbiveis
+    appliedFlatMP = 50.0 + (Math.Ceiling(akTarget.GetLevel() * 0.5))
 
     ; Percentual aplicado apenas sobre o baseline
     appliedPercentMP = baselineMP * PercentAmount

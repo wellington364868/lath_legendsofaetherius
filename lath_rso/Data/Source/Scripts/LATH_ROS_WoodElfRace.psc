@@ -35,11 +35,11 @@ Float RaceMagicResist = 0.0         ;
 Float RaceFrostResist = 0.0         ;
 Float RaceShockResist = 0.0         ;
 Float RaceFireResist = 0.0         ;
-Float RacePoisonResist = 10.0       ;+10% poison resistence
+Float RacePoisonResist = 0.0       ;
 Float RaceSpeedMult = 10.0          ;+10% velocidade de movimento 
 Float RaceCarryWeight = 0.0
 Float RaceHPRegen = 0.0
-Float RaceStaminaRegen = 0.1       ;+10% Stamina regen
+Float RaceStaminaRegen = 0.1       ;+10 Stamina regen
 Float RaceMagickaRegen = 0.1       ;+10% Magicka regen
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)

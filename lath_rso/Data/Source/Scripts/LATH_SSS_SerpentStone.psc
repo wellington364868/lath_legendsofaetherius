@@ -6,7 +6,7 @@ Float appliedFlatMP = 0.0
 Float appliedPercentHP = 0.0
 Float appliedPercentMP = 0.0
 Float appliedPercentStamina = 0.0
-Float appliedResistPoison = 0.0
+Float appliedPoisonResist = 0.0
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
 
@@ -19,10 +19,10 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     endif
 
     ; --- Percentuais ---
-    Float PercentHP = 0.15
-    Float PercentMP = 0.15
-    Float PercentStamina = 0.15
-    Float ResistPoisonBonus = 10.0
+    Float PercentHP = 0.10
+    Float PercentMP = 0.10
+    Float PercentStamina = 0.10
+    Float PoisonResistBonus = 10.0
 
     ; --- Baseline antes de mods ---
     Float baselineHP = akTarget.GetBaseActorValue("Health")
@@ -37,7 +37,7 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     appliedPercentHP = baselineHP * PercentHP
     appliedPercentMP = baselineMP * PercentMP
     appliedPercentStamina = baselineStamina * PercentStamina
-    appliedResistPoison = ResistPoisonBonus
+    appliedPoisonResist = PoisonResistBonus
 
     ; --- Aplicar flat ---
     akTarget.ModActorValue("Health", appliedFlatHP)
@@ -47,11 +47,11 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     akTarget.ModActorValue("Health", appliedPercentHP)
     akTarget.ModActorValue("Magicka", appliedPercentMP)
     akTarget.ModActorValue("Stamina", appliedPercentStamina)
-    akTarget.ModActorValue("ResistPoison", appliedResistPoison)
+    akTarget.ModActorValue("PoisonResist", appliedPoisonResist)
 
     Debug.Notification("Serpent Stone: +"+Math.Floor(appliedFlatHP)+" HP per level, +"+Math.Floor(appliedPercentHP)+"% HP base.")
     Debug.Notification("Serpent Stone: +"+Math.Floor(appliedPercentMP)+"% MP base, +"+Math.Floor(appliedPercentStamina)+"% Stamina base.")
-    Debug.Notification("Serpent Stone: +"+Math.Floor(appliedResistPoison)+"% ResistPoison.")
+    Debug.Notification("Serpent Stone: +"+Math.Floor(appliedPoisonResist)+"% ResistPoison.")
 
 EndEvent
 
@@ -66,7 +66,7 @@ Event OnEffectFinish(Actor akTarget, Actor akCaster)
     akTarget.ModActorValue("Health", -appliedPercentHP)
     akTarget.ModActorValue("Magicka", -appliedPercentMP)
     akTarget.ModActorValue("Stamina", -appliedPercentStamina)
-    akTarget.ModActorValue("ResistPoison", -appliedResistPoison)
+    akTarget.ModActorValue("PoisonResist", -appliedPoisonResist)
 
     ; Resetar variáveis
     appliedFlatHP = 0.0
@@ -74,7 +74,7 @@ Event OnEffectFinish(Actor akTarget, Actor akCaster)
     appliedFlatMP = 0.0
     appliedPercentMP = 0.0
     appliedPercentStamina = 0.0
-    appliedResistPoison = 0.0
+    appliedPoisonResist = 0.0
 
     ;Debug.Notification("Serpent Stone: blessing removed.")
 

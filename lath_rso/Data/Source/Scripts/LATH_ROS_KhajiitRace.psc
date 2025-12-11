@@ -13,7 +13,7 @@ Float appliedFlatMagicka = 0.0
 Float appliedPercentMagicka = 0.0
 Float appliedMagicResist = 0.0
 Float appliedFrostResist = 0.0
-Float appliedShockResist = 0.0
+Float appliedElectricResist = 0.0
 Float appliedFireResist = 0.0
 Float appliedPoisonResist = 0.0
 Float appliedSpeedMult = 0.0
@@ -33,7 +33,7 @@ Float RaceFlatMagicka = 10.0        ;+10 MP
 Float RacePercentMagicka = 0.0
 Float RaceMagicResist = 0.0         ;
 Float RaceFrostResist = 0.0         ;
-Float RaceShockResist = 0.0         ;
+Float RaceElectricResist = 0.0         ;
 Float RaceFireResist = 0.0         ;
 Float RacePoisonResist = 0.0       ;+20% poison resistence
 Float RaceSpeedMult = 10.0          ;+10% velocidade de movimento 
@@ -84,13 +84,13 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
     ;------------------------------
     appliedMagicResist = RaceMagicResist
     appliedFrostResist = RaceFrostResist
-    appliedShockResist = RaceShockResist
+    appliedElectricResist = RaceElectricResist
     appliedFireResist = RaceFireResist
     appliedPoisonResist = RacePoisonResist
 
     akTarget.ModActorValue("MagicResist", appliedMagicResist)
     akTarget.ModActorValue("FrostResist", appliedFrostResist)
-    akTarget.ModActorValue("ShockResist", appliedShockResist)
+    akTarget.ModActorValue("ElectricResist", appliedElectricResist)
     akTarget.ModActorValue("FireResist", appliedFireResist)
     akTarget.ModActorValue("PoisonResist", appliedPoisonResist)
 
@@ -130,7 +130,7 @@ Event OnEffectFinish(Actor akTarget, Actor akCaster)
 
     akTarget.ModActorValue("MagicResist", -appliedMagicResist)
     akTarget.ModActorValue("FrostResist", -appliedFrostResist)
-    akTarget.ModActorValue("ShockResist", -appliedShockResist)
+    akTarget.ModActorValue("ElectricResist", -appliedElectricResist)
     akTarget.ModActorValue("FireResist", -appliedFireResist)
     akTarget.ModActorValue("PoisonResist", -appliedPoisonResist)
 
@@ -150,7 +150,7 @@ Event OnEffectFinish(Actor akTarget, Actor akCaster)
     appliedPercentMagicka = 0.0
     appliedMagicResist = 0.0
     appliedFrostResist = 0.0
-    appliedShockResist = 0.0
+    appliedElectricResist = 0.0
     appliedFireResist = 0.0
     appliedPoisonResist = 0.0
     appliedSpeedMult = 0.0
