@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.7">
+  <diagram name="Página-1" id="v5JMzm5nQx_o24EWKltA">
+    <mxGraphModel dx="872" dy="431" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="V45zfwgWPLBxPCxSijl1-1" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Skillful Hands" vertex="1">
+          <mxGeometry height="115" width="120" x="400" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Sword Critical Blow" vertex="1">
+          <mxGeometry height="80" width="80" x="300" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-3" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Dagger Critical Blow" vertex="1">
+          <mxGeometry height="80" width="80" x="630" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-4" edge="1" parent="1" source="V45zfwgWPLBxPCxSijl1-1" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" target="V45zfwgWPLBxPCxSijl1-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="390" y="500" as="sourcePoint" />
+            <mxPoint x="440" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-6" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Piercing Critical Blow" vertex="1">
+          <mxGeometry height="80" width="80" x="500" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-7" edge="1" parent="1" source="V45zfwgWPLBxPCxSijl1-1" style="endArrow=classic;html=1;rounded=0;entryX=0.35;entryY=1.013;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryPerimeter=0;" target="V45zfwgWPLBxPCxSijl1-6" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="500" y="540" as="sourcePoint" />
+            <mxPoint x="550" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-8" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Crushing Critical Blow" vertex="1">
+          <mxGeometry height="80" width="80" x="680" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-9" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Axe Critical Blow" vertex="1">
+          <mxGeometry height="80" width="80" x="360" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-10" edge="1" parent="1" source="V45zfwgWPLBxPCxSijl1-1" style="endArrow=classic;html=1;rounded=0;entryX=0.65;entryY=1.013;entryDx=0;entryDy=0;entryPerimeter=0;" target="V45zfwgWPLBxPCxSijl1-9" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="300" y="410" as="sourcePoint" />
+            <mxPoint x="350" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-11" edge="1" parent="1" source="V45zfwgWPLBxPCxSijl1-1" style="endArrow=classic;html=1;rounded=0;exitX=0.667;exitY=0.13;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.3;entryY=0.913;entryDx=0;entryDy=0;entryPerimeter=0;" target="V45zfwgWPLBxPCxSijl1-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="510" y="480" as="sourcePoint" />
+            <mxPoint x="560" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V45zfwgWPLBxPCxSijl1-12" edge="1" parent="1" source="V45zfwgWPLBxPCxSijl1-1" style="endArrow=classic;html=1;rounded=0;exitX=0.833;exitY=0.304;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="V45zfwgWPLBxPCxSijl1-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="530" y="530" as="sourcePoint" />
+            <mxPoint x="580" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
