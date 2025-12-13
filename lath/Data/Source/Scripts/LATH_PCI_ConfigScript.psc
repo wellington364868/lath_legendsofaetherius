@@ -18,6 +18,7 @@ Race Property ArgonianRace Auto
 Perk Property LATH_BasicSmithing Auto
 
 Spell Property PlayerMonitorAbility Auto
+Spell Property AttackMonitorAbility Auto
 
 Event OnInit() 
 
@@ -36,12 +37,20 @@ Event OnUpdate()
 
     Config_PlayerMonitor(PlayerRef)
     Config_Smithing(PlayerRef)
+    Config_AttackMonitor(PlayerRef)
     
 EndEvent
 
 
 Function Config_PlayerMonitor(Actor PlayerRef)
     PlayerRef.AddSpell(PlayerMonitorAbility, false)
+endFunction
+
+Function Config_AttackMonitor(Actor PlayerRef)
+
+    if !PlayerRef.HasSpell(AttackMonitorAbility)
+        PlayerRef.AddSpell(AttackMonitorAbility, false)
+    endif
 endFunction
 
 
