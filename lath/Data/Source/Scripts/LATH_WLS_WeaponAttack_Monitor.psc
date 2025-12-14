@@ -9,10 +9,13 @@ Keyword Property WeapTypeGreatsword Auto
 Keyword Property WeapTypeBattleaxe Auto
 Keyword Property WeapTypeWarhammer Auto
 
+Perk Property Dagger_1 Auto 
+Perk Property Dagger_2 Auto 
+
 Float baselineStaminaRegen = 0.0
 
-
-float attack_stamina_cost = 10.0
+float base_stamina_cost = 10.0
+float attack_stamina_cost = 0.0
 
 function OnEffectStart(Actor akTarget, Actor akCaster)
 
@@ -34,6 +37,7 @@ function OnRaceSwitchComplete()
 
     self.RegisterForAnimationEvent(TheTarget as objectreference, "BowDrawn")
     self.RegisterForAnimationEvent(TheTarget as objectreference, "BowRelease")
+
 endFunction
 
 function OnAnimationEvent(objectreference akSource, String asEventName)
@@ -49,29 +53,44 @@ function OnAnimationEvent(objectreference akSource, String asEventName)
 
 
         if right_weapon.HasKeyword(WeapTypeSword)
-            right_cost = 10.0
+            right_cost = base_stamina_cost
         elseif right_weapon.HasKeyword(WeapTypeWarAxe)
-            right_cost = 10.0
+            right_cost = base_stamina_cost
         elseif right_weapon.HasKeyword(WeapTypeMace)
-            right_cost = 10.0
+            right_cost = base_stamina_cost
         elseif right_weapon.HasKeyword(WeapTypeDagger)
-            right_cost = 10.0
+            right_cost = base_stamina_cost
+
+            ;perk: Swift Assault
+            if PlayerRef.HasPerk(Dagger_2)
+                right_cost = base_stamina_cost * 0.6
+            elseif PlayerRef.HasPerk(Dagger_1)
+                right_cost = base_stamina_cost * 0.8
+            endif
+
         elseif right_weapon.HasKeyword(WeapTypeGreatsword)
-            right_cost = 20.0
+            right_cost = base_stamina_cost * 2.0
         elseif right_weapon.HasKeyword(WeapTypeBattleaxe)
-            right_cost = 20.0
+            right_cost = base_stamina_cost * 2.0
         elseif right_weapon.HasKeyword(WeapTypeWarhammer)
-            right_cost = 20.0
+            right_cost = base_stamina_cost * 2.0
         endif
 
         if left_weapon.HasKeyword(WeapTypeSword)
-            left_cost = 10.0
+            left_cost = base_stamina_cost
         elseif left_weapon.HasKeyword(WeapTypeWarAxe)
-            left_cost = 10.0
+            left_cost = base_stamina_cost
         elseif left_weapon.HasKeyword(WeapTypeMace)
-            left_cost = 10.0
+            left_cost = base_stamina_cost
         elseif left_weapon.HasKeyword(WeapTypeDagger)
-            left_cost = 10.0
+            left_cost = base_stamina_cost
+
+            ;perk: Swift Assault
+            if PlayerRef.HasPerk(Dagger_2)
+                left_cost = base_stamina_cost * 0.6
+            elseif PlayerRef.HasPerk(Dagger_1)
+                left_cost = base_stamina_cost * 0.8
+            endif
         endif
 
         ;Debug.Notification("left Weapon Name: " + left_weapon.GetName())
@@ -88,7 +107,7 @@ function OnAnimationEvent(objectreference akSource, String asEventName)
 
     elseif asEventName == "BowDrawn"
         
-        attack_stamina_cost = 40.0
+        attack_stamina_cost = 30.0
 
         baselineStaminaRegen = self.GetTargetActor().GetBaseActorValue("StaminaRate")
         self.GetTargetActor().ModActorValue("StaminaRate", -baselineStaminaRegen)
