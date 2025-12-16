@@ -17,6 +17,8 @@ Float baselineStaminaRegen = 0.0
 float base_stamina_cost = 10.0
 float attack_stamina_cost = 0.0
 
+float base_stamina_block = 10.0
+
 function OnEffectStart(Actor akTarget, Actor akCaster)
 
 	self.RegisterForAnimationEvent(akTarget as objectreference, "weaponSwing")
@@ -24,6 +26,9 @@ function OnEffectStart(Actor akTarget, Actor akCaster)
 
     self.RegisterForAnimationEvent(akTarget as objectreference, "BowDrawn")
     self.RegisterForAnimationEvent(akTarget as objectreference, "BowRelease")
+
+    self.RegisterForAnimationEvent(akTarget as objectreference, "blockStartOut")
+    self.RegisterForAnimationEvent(akTarget as objectreference, "blockStop")
 
     Debug.Notification("WLS - Attack Monitor Iniciado")
 endFunction
@@ -37,6 +42,9 @@ function OnRaceSwitchComplete()
 
     self.RegisterForAnimationEvent(TheTarget as objectreference, "BowDrawn")
     self.RegisterForAnimationEvent(TheTarget as objectreference, "BowRelease")
+
+    self.RegisterForAnimationEvent(TheTarget as objectreference, "blockStartOut")
+    self.RegisterForAnimationEvent(TheTarget as objectreference, "blockStop")
 
 endFunction
 
@@ -107,7 +115,7 @@ function OnAnimationEvent(objectreference akSource, String asEventName)
 
     elseif asEventName == "BowDrawn"
         
-        attack_stamina_cost = 30.0
+        attack_stamina_cost = base_stamina_cost * 1.5
 
         baselineStaminaRegen = self.GetTargetActor().GetBaseActorValue("StaminaRate")
         self.GetTargetActor().ModActorValue("StaminaRate", -baselineStaminaRegen)
@@ -119,7 +127,61 @@ function OnAnimationEvent(objectreference akSource, String asEventName)
         
         self.GetTargetActor().ModActorValue("StaminaRate", baselineStaminaRegen)
         baselineStaminaRegen = 0.0
+
+    elseif asEventName == "blockStartOut"
+        if baselineStaminaRegen == 0.0
+            baselineStaminaRegen = self.GetTargetActor().GetActorValue("StaminaRate")
+            self.GetTargetActor().ModActorValue("StaminaRate", -baselineStaminaRegen)
+        endif
+
+    elseif asEventName == "blockStop"
+        self.GetTargetActor().ModActorValue("StaminaRate", baselineStaminaRegen)
+        
+        baselineStaminaRegen = 0.0
 	endIf
 
     attack_stamina_cost = 0.0
+
 endFunction
+
+
+Event OnHit(ObjectReference akAggressor, Form akSource, Projectile akProjectile, Bool abPowerAttack, Bool abSneakAttack, Bool abBashAttack, Bool abHitBlocked)
+
+
+    Actor selfActor = GetTargetActor()
+    if !selfActor
+        return
+    endif
+
+    
+    float block_stamina_cost = base_stamina_block
+
+    Weapon enemy_weapon = akSource as Weapon
+
+        if enemy_weapon.HasKeyword(WeapTypeSword)
+            block_stamina_cost = block_stamina_cost * 1.0
+        elseif enemy_weapon.HasKeyword(WeapTypeWarAxe)
+            block_stamina_cost = block_stamina_cost * 1.0
+        elseif enemy_weapon.HasKeyword(WeapTypeMace)
+            block_stamina_cost = block_stamina_cost * 1.0
+        elseif enemy_weapon.HasKeyword(WeapTypeDagger)
+            block_stamina_cost = block_stamina_cost * 1.0
+        elseif enemy_weapon.HasKeyword(WeapTypeGreatsword)
+            block_stamina_cost = base_stamina_block * 2.0
+        elseif enemy_weapon.HasKeyword(WeapTypeBattleaxe)
+            block_stamina_cost = base_stamina_block * 2.0
+        elseif enemy_weapon.HasKeyword(WeapTypeWarhammer)
+            block_stamina_cost = base_stamina_block * 2.0
+        endif
+
+    if abPowerAttack 
+        block_stamina_cost = block_stamina_cost * 2.0
+    endif
+    
+    if abHitBlocked 
+
+
+        Debug.Notification("arma: " + enemy_weapon.getName())
+        selfActor.DamageActorValue("Stamina", block_stamina_cost)
+    endif
+EndEvent
