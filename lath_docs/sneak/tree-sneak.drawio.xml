@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.7">
+  <diagram name="Página-1" id="K6CaVX3N0ydb0ZM6UnyQ">
+    <mxGraphModel dx="872" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-1" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Stealth" vertex="1">
+          <mxGeometry height="90" width="96" x="374" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Night Cloak" vertex="1">
+          <mxGeometry height="80" width="80" x="180" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-3" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Muffled Movement" vertex="1">
+          <mxGeometry height="80" width="80" x="550" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-4" edge="1" parent="1" source="P4rfJoEA10lZ5I1xSYIJ-1" style="endArrow=classic;html=1;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="P4rfJoEA10lZ5I1xSYIJ-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="290" y="360" as="sourcePoint" />
+            <mxPoint x="340" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-5" edge="1" parent="1" source="P4rfJoEA10lZ5I1xSYIJ-1" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.238;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;" target="P4rfJoEA10lZ5I1xSYIJ-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="470" y="380" as="sourcePoint" />
+            <mxPoint x="520" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-6" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Silent Roll" vertex="1">
+          <mxGeometry height="80" width="80" x="470" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-7" edge="1" parent="1" source="P4rfJoEA10lZ5I1xSYIJ-3" style="endArrow=classic;html=1;rounded=0;exitX=0.363;exitY=-0.012;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" target="P4rfJoEA10lZ5I1xSYIJ-6" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="710" y="200" as="sourcePoint" />
+            <mxPoint x="760" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-8" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Deadly Aim" vertex="1">
+          <mxGeometry height="80" width="80" x="334" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-9" edge="1" parent="1" source="P4rfJoEA10lZ5I1xSYIJ-2" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="270" y="190" as="sourcePoint" />
+            <mxPoint x="330" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-10" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Assassin&#39;s Blade" vertex="1">
+          <mxGeometry height="80" width="80" x="510" y="-100" as="geometry" />
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-11" edge="1" parent="1" source="P4rfJoEA10lZ5I1xSYIJ-2" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="P4rfJoEA10lZ5I1xSYIJ-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="260" y="120" as="sourcePoint" />
+            <mxPoint x="310" y="70" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-12" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Shadow Caster" vertex="1">
+          <mxGeometry height="80" width="80" x="254" y="-70" as="geometry" />
+        </mxCell>
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-13" edge="1" parent="1" source="P4rfJoEA10lZ5I1xSYIJ-2" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.325;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="P4rfJoEA10lZ5I1xSYIJ-12" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="150" y="110" as="sourcePoint" />
+            <mxPoint x="200" y="60" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
