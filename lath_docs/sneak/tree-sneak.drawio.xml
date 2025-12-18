@@ -45,7 +45,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="P4rfJoEA10lZ5I1xSYIJ-10" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Assassin&#39;s Blade" vertex="1">
-          <mxGeometry height="80" width="80" x="510" y="-100" as="geometry" />
+          <mxGeometry height="80" width="80" x="410" y="-150" as="geometry" />
         </mxCell>
         <mxCell id="P4rfJoEA10lZ5I1xSYIJ-11" edge="1" parent="1" source="P4rfJoEA10lZ5I1xSYIJ-2" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="P4rfJoEA10lZ5I1xSYIJ-10" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
@@ -54,9 +54,9 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="P4rfJoEA10lZ5I1xSYIJ-12" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Shadow Caster" vertex="1">
-          <mxGeometry height="80" width="80" x="254" y="-70" as="geometry" />
+          <mxGeometry height="80" width="80" x="410" y="-30" as="geometry" />
         </mxCell>
-        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-13" edge="1" parent="1" source="P4rfJoEA10lZ5I1xSYIJ-2" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.325;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="P4rfJoEA10lZ5I1xSYIJ-12" value="">
+        <mxCell id="P4rfJoEA10lZ5I1xSYIJ-13" edge="1" parent="1" source="P4rfJoEA10lZ5I1xSYIJ-2" style="endArrow=classic;html=1;rounded=0;exitX=0.95;exitY=0.188;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitPerimeter=0;" target="P4rfJoEA10lZ5I1xSYIJ-12" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <mxPoint x="150" y="110" as="sourcePoint" />
             <mxPoint x="200" y="60" as="targetPoint" />
