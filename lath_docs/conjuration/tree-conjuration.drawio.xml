@@ -98,10 +98,10 @@
             <mxPoint x="530" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="dPKPmjC-vKrYIZpil-Bo-23" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Mystic Binding" vertex="1">
+        <mxCell id="dPKPmjC-vKrYIZpil-Bo-23" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Oblivion Binding" vertex="1">
           <mxGeometry height="80" width="80" x="630" y="60" as="geometry" />
         </mxCell>
-        <mxCell id="dPKPmjC-vKrYIZpil-Bo-24" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Oblivion Binding" vertex="1">
+        <mxCell id="dPKPmjC-vKrYIZpil-Bo-24" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Mystic Binding" vertex="1">
           <mxGeometry height="80" width="80" x="670" y="-100" as="geometry" />
         </mxCell>
         <mxCell id="dPKPmjC-vKrYIZpil-Bo-25" edge="1" parent="1" source="dPKPmjC-vKrYIZpil-Bo-21" style="endArrow=classic;html=1;rounded=0;entryX=0.288;entryY=0.963;entryDx=0;entryDy=0;entryPerimeter=0;" target="dPKPmjC-vKrYIZpil-Bo-23" value="">
